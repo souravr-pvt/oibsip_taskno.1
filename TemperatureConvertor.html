@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 150px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        select {
+            padding: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Temperature Converter</h2>
+    <label for="temperature">Temperature:</label>
+    <input type="text" id="temperature">
+    <select id="unit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <!-- Add more options for Kelvin if needed -->
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <div id="result"></div>
+
+    <script>
+        function convertTemperature() {
+            var temperatureInput = document.getElementById("temperature").value;
+            var unit = document.getElementById("unit").value;
+            var convertedTemperature;
+
+            if (isNaN(temperatureInput)) {
+                alert("Please enter a valid number for temperature.");
+                return;
+            }
+
+            if (unit === "celsius") {
+                convertedTemperature = (parseFloat(temperatureInput) * 9 / 5) + 32;
+                document.getElementById("result").innerHTML = temperatureInput + " Celsius = " + convertedTemperature.toFixed(2) + " Fahrenheit";
+            } else if (unit === "fahrenheit") {
+                convertedTemperature = (parseFloat(temperatureInput) - 32) * 5 / 9;
+                document.getElementById("result").innerHTML = temperatureInput + " Fahrenheit = " + convertedTemperature.toFixed(2) + " Celsius";
+            }
+            // Add more conditions for Kelvin conversion if needed
+        }
+    </script>
+</body>
+</html>
